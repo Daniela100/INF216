@@ -67,8 +67,8 @@ var fundo =  new function(){
 }
 
 var lutador =  new function(){
-    this.agente = new Personagem('Haggar.gif', 230,135,120,80);
-    this.frames = 29;
+    this.agente = new Personagem('Haggar.gif', 230,135,122,102);
+    this.frames = 6;
     this.corrente=0;
     this.estados= new Array();
     this.estados[0] = new Estado(0,1,0,0,500);
