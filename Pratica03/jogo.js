@@ -88,6 +88,14 @@ var heroi =  new function(){
     this.estados[1].complemento=  function() {
         that.agente.x= Math.max(0, that.agente.x-5);
     }
+
+    this.estados[2] = new Estado(13,17,0,0,200, this);
+
+    this.estados[2].complemento = function() {
+        that.agente.x = Math.max(0, that.agente.x+5);
+    }
+
+    this.estados[3] = new Estado(18,25,0,0,500,this);
     
     this.desenha = function(){
         if ( this.estados[this.corrente].muda()) this.estados[this.corrente].prox();
@@ -103,8 +111,21 @@ function desenha(){
 
 function acertaJanela(){
     if (heroi.agente.x-fundo.sx<0){
-        fundo.sx = heroi.agente.x; 
+        fundo.sx = heroi.agente.x;
+        if(heroi.agente.x == 0) {
+            fundo.sx = fundo.img.width-400;
+            heroi.agente.x = fundo.img.width-50;
+        }
     }
+
+    else if (heroi.agente.x+50-fundo.sx > 400) {
+        fundo.sx += 5;
+        if(heroi.agente.x+50-fundo.img.width > 0) {
+            fundo.sx = 0;
+            heroi.agente.x = 0;
+        }
+    }
+
 }
 
 var GameLoop = function(){
@@ -128,7 +149,11 @@ document.onkeydown = function(e){
         heroi.corrente=0;
     } else if(keycode===ESQ) {
         heroi.corrente=1; 
-    } 
+    } else if(keycode===DIR) {
+        heroi.corrente=2;
+    } else if(keycode===CIMA) {
+        heroi.corrente=3;
+    }
 }
 
 GameLoop();
