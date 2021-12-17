@@ -83,13 +83,13 @@ var heroi =  new function(){
     this.corrente=0;
     this.estados= new Array();
     this.estados[0] = new Estado(4,12,0,0,500, this);  
-    this.estados[1] = new Estado(0,4 ,0,0,200, this);
+    this.estados[1] = new Estado(0,4 ,0,0,50, this);
 
     this.estados[1].complemento=  function() {
         that.agente.x= Math.max(0, that.agente.x-5);
     }
 
-    this.estados[2] = new Estado(13,17,0,0,200, this);
+    this.estados[2] = new Estado(13,17,0,0,50, this);
 
     this.estados[2].complemento = function() {
         that.agente.x = Math.max(0, that.agente.x+5);
@@ -114,7 +114,7 @@ function acertaJanela(){
         fundo.sx = heroi.agente.x;
         if(heroi.agente.x == 0) {
             fundo.sx = fundo.img.width-400;
-            heroi.agente.x = fundo.img.width-50;
+            heroi.agente.x = fundo.img.width-400;
         }
     }
 
@@ -122,7 +122,7 @@ function acertaJanela(){
         fundo.sx += 5;
         if(heroi.agente.x+50-fundo.img.width > 0) {
             fundo.sx = 0;
-            heroi.agente.x = 0;
+            heroi.agente.x = fundo.sx + 350;
         }
     }
 
