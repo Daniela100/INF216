@@ -45,9 +45,8 @@ class Example extends Phaser.Scene
         this.particles = this.add.particles('plasma');
         // this.physics.add.overlap(this.mira, this.nave);
         this.physics.add.overlap(this.nave, this.player, function () {
-            console.log('Na mira');
             na_mira = true;
-        })
+        });
 
         this.particles.createEmitter({
             frame: 0,
@@ -92,6 +91,7 @@ class Example extends Phaser.Scene
         if (this.cursors.space.isDown && !destroy)
         {
             this.particles.emitParticleAt(this.player.x, this.player.y+350);
+            
             if(na_mira) {
                 this.emitter.explode(50);
                 this.nave.destroy();
@@ -124,6 +124,8 @@ class Example extends Phaser.Scene
         {
             this.player.setVelocityY(500);
         }
+
+        na_mira = false;
     }
 }
 
